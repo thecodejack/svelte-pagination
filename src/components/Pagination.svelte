@@ -37,7 +37,7 @@
   } else if (forcePage) {
     initialSelected = forcePage;
   } else {
-    initialSelected = 1;
+    initialSelected = 0;
   }
 
   let state = {
@@ -266,15 +266,15 @@
   }
 </style>
 
-<ul className={containerClassName}>
-  <li className={previousClasses}>
+<ul class={containerClassName}>
+  <li class={previousClasses}>
     <a
       on:click={handlePreviousPage}
-      className={previousLinkClassName}
+      class={previousLinkClassName}
       href={hrefBuilderMain(state.selected - 1)}
       tabIndex="0"
       role="button"
-      onKeyPress={handlePreviousPage}
+      on:keypress={handlePreviousPage}
       aria-disabled={previousAriaDisabled}>
       {previousLabel}
     </a>
@@ -282,6 +282,7 @@
 
   {#each state.items as { itemIndex, type }, i}
     {#if type === 'PageView'}
+      {@debug itemIndex}
       <svelte:component
         this={PageView}
         key={itemIndex}
@@ -306,14 +307,14 @@
     {/if}
   {/each}
 
-  <li className={nextClasses}>
+  <li class={nextClasses}>
     <a
       on:click={handleNextPage}
-      className={nextLinkClassName}
+      class={nextLinkClassName}
       href={hrefBuilderMain(state.selected + 1)}
       tabIndex="0"
       role="button"
-      onKeyPress={handleNextPage}
+      on:keypress={handleNextPage}
       aria-disabled={nextAriaDisabled}>
       {nextLabel}
     </a>

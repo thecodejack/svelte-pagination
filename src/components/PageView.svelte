@@ -1,5 +1,5 @@
 <script>
-  export let onClick = null;
+  export let onClick = null; // TODO fix keypress
   export let selected = false;
   export let pageClassName = "";
   export let pageLinkClassName = "";

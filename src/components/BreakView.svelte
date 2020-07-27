@@ -2,7 +2,7 @@
   export let breakLabel = "";
   export let breakClassName = "";
   export let breakLinkClassName = "";
-  export let onClick = null;
+  export let onClick = null; // TODO fix keypress
 
   let className = "";
 
