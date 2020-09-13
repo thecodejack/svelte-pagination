@@ -1,6 +1,6 @@
 import { action } from "@storybook/addon-actions";
 
-import BasicDefaultView from "./views/BasicDefaultView.svelte";
+import BasicDefaultView from "./views/BasicDefaultStyledView.svelte";
 
 import intro from "./../README.md";
 
@@ -11,7 +11,7 @@ export default {
   },
 };
 
-export const BasicDefaultRawPagination = () => ({
+export const BasicDefaultStylesPagination = () => ({
   Component: BasicDefaultView,
   props: {},
 });

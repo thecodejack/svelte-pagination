@@ -1,5 +1,5 @@
 <script>
-  import Switch from "./../../src";
+  import Pagination from "./../../src";
 
   let checkedValue = true;
 
@@ -10,16 +10,9 @@
 </script>
 
 <h1>Simple usage</h1>
-<Switch
-  previousLabel={'previous'}
-  nextLabel={'next'}
-  breakLabel={'...'}
-  breakClassName={'break-me'}
+<Pagination
   pageCount={100}
   marginPagesDisplayed={2}
   pageRangeDisplayed={5}
-  onPageChange={handleChange}
-  containerClassName={'pagination'}
-  subContainerClassName={'pages pagination'}
-  activeClassName={'active'} />
+  onPageChange={handleChange} />
 <br />

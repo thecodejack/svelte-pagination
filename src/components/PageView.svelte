@@ -10,6 +10,13 @@
   export let ariaLabel = "";
   export let page = 0;
 
+  let defaults = {
+    pageClassName,
+    pageLinkClassName,
+    activeClassName,
+    activeLinkClassName
+  };
+
   $: ariaLabel =
     ariaLabel ||
     "Page " + page + (extraAriaContext ? " " + extraAriaContext : "");
@@ -33,6 +40,13 @@
     } else {
       pageLinkClassName = activeLinkClassName;
     }
+  }
+
+  $: if (!selected) {
+    pageLinkClassName = defaults.pageLinkClassName;
+    pageClassName = defaults.pageClassName;
+    activeClassName = defaults.activeClassName;
+    activeLinkClassName = defaults.activeLinkClassName;
   }
 </script>
 

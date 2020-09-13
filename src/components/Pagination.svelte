@@ -9,7 +9,6 @@
   export let nextLabel = "Next";
   export let breakLabel = "...";
   export let hrefBuilder;
-  export let onPageChange;
   export let initialPage;
   export let forcePage;
   export let disableInitialCallback = false;
@@ -27,6 +26,7 @@
   export let breakLinkClassName;
   export let extraAriaContext;
   export let ariaLabelBuilder;
+  export let initialPageIndex = 1;
 
   const dispatch = createEventDispatcher();
 
@@ -37,7 +37,7 @@
   } else if (forcePage) {
     initialSelected = forcePage;
   } else {
-    initialSelected = 0;
+    initialSelected = 1;
   }
 
   let state = {
@@ -62,7 +62,6 @@
   }
 
   function handlePageSelected(selected, event) {
-    debugger;
     event.preventDefault ? event.preventDefault() : (event.returnValue = false);
     if (state.selected === selected) return;
 
@@ -104,7 +103,7 @@
     if (
       hrefBuilder &&
       pageIndex !== state.selected &&
-      pageIndex >= 0 &&
+      pageIndex >= initialPageIndex &&
       pageIndex < pageCount
     ) {
       return hrefBuilder(pageIndex + 1);
@@ -150,12 +149,14 @@
   let nextAriaDisabled = "";
 
   $: previousClasses =
-    previousClassName + (state.selected === 0 ? ` ${disabledClassName}` : "");
+    previousClassName +
+    (state.selected === initialPageIndex ? ` ${disabledClassName}` : "");
   $: nextClasses =
     nextClassName +
     (state.selected === pageCount - 1 ? ` ${disabledClassName}` : "");
 
-  $: previousAriaDisabled = state.selected === 0 ? "true" : "false";
+  $: previousAriaDisabled =
+    state.selected === initialPageIndex ? "true" : "false";
   $: nextAriaDisabled = state.selected === pageCount - 1 ? "true" : "false";
 
   $: {
@@ -163,7 +164,7 @@
     const { selected } = state;
 
     if (pageCount <= pageRangeDisplayed) {
-      for (let index = 0; index < pageCount; index++) {
+      for (let index = initialPageIndex; index < pageCount; index++) {
         items.push({
           itemIndex: index,
           type: "PageView"
@@ -189,8 +190,8 @@
       let page;
       let breakView;
 
-      for (index = 0; index < pageCount; index++) {
-        page = index + 1;
+      for (index = initialPageIndex; index < pageCount; index++) {
+        page = index;
 
         // If the page index is lower than the margin defined,
         // the page has to be displayed on the left side of
@@ -282,7 +283,6 @@
 
   {#each state.items as { itemIndex, type }, i}
     {#if type === 'PageView'}
-      {@debug itemIndex}
       <svelte:component
         this={PageView}
         key={itemIndex}
@@ -295,7 +295,7 @@
         {extraAriaContext}
         href={hrefBuilderMain(itemIndex)}
         ariaLabel={ariaLabelBuilderMain(itemIndex)}
-        page={itemIndex + 1} />
+        page={itemIndex} />
     {:else}
       <svelte:component
         this={BreakView}
