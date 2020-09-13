@@ -1,6 +1,6 @@
 {
   "name": "svelte-pagination",
-  "version": "0.0.1-beta.0",
+  "version": "0.0.1",
   "description": "Svelte raw component for pagination",
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
