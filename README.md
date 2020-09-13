@@ -9,7 +9,7 @@ Raw SvelteJS component for dynamic pagination. By applying styles, developer can
 
 [Click here for Storybook link](https://svelte-pagination.netlify.app/)
 
-[REPL Link](https://svelte.dev/repl/72a37aee9ae24705b7d874def7e1f270)
+[REPL Link](https://svelte.dev/repl/20e93c193d6d4a9e922465f684fb1539)
 
 ## Installation
 
