@@ -1,11 +1,11 @@
 <script>
   import Pagination from "./../../src";
 
-  let checkedValue = true;
+  let checkedValue = 1;
 
   function handleChange(e) {
-    const { checked } = e.detail;
-    checkedValue = checked;
+    const { selected } = e.detail;
+    checkedValue = selected;
   }
 </script>
 

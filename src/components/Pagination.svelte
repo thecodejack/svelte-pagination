@@ -26,7 +26,7 @@
   export let breakLinkClassName;
   export let extraAriaContext;
   export let ariaLabelBuilder;
-  export let initialPageIndex = 1;
+  export let startPageIndex = 1;
 
   const dispatch = createEventDispatcher();
 
@@ -103,7 +103,7 @@
     if (
       hrefBuilder &&
       pageIndex !== state.selected &&
-      pageIndex >= initialPageIndex &&
+      pageIndex >= startPageIndex &&
       pageIndex < pageCount
     ) {
       return hrefBuilder(pageIndex + 1);
@@ -150,13 +150,13 @@
 
   $: previousClasses =
     previousClassName +
-    (state.selected === initialPageIndex ? ` ${disabledClassName}` : "");
+    (state.selected === startPageIndex ? ` ${disabledClassName}` : "");
   $: nextClasses =
     nextClassName +
     (state.selected === pageCount - 1 ? ` ${disabledClassName}` : "");
 
   $: previousAriaDisabled =
-    state.selected === initialPageIndex ? "true" : "false";
+    state.selected === startPageIndex ? "true" : "false";
   $: nextAriaDisabled = state.selected === pageCount - 1 ? "true" : "false";
 
   $: {
@@ -164,7 +164,7 @@
     const { selected } = state;
 
     if (pageCount <= pageRangeDisplayed) {
-      for (let index = initialPageIndex; index < pageCount; index++) {
+      for (let index = startPageIndex; index < pageCount; index++) {
         items.push({
           itemIndex: index,
           type: "PageView"
@@ -190,7 +190,7 @@
       let page;
       let breakView;
 
-      for (index = initialPageIndex; index < pageCount; index++) {
+      for (index = startPageIndex; index < pageCount; index++) {
         page = index;
 
         // If the page index is lower than the margin defined,
