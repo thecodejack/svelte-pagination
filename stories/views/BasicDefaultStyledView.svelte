@@ -62,7 +62,7 @@
   pageCount={100}
   marginPagesDisplayed={2}
   pageRangeDisplayed={5}
-  onPageChange={handleChange}
+  on:change={handleChange}
   containerClassName={'pagination'}
   subContainerClassName={'pages'}
   activeClassName={'active'} />
@@ -80,7 +80,7 @@
   pageCount={100}
   marginPagesDisplayed={2}
   pageRangeDisplayed={5}
-  onPageChange={handleChange}
+  on:change={handleChange}
   containerClassName={'pagination2'}
   subContainerClassName={'pages'}
   activeClassName={'active'} />

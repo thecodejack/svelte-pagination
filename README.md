@@ -39,7 +39,7 @@ yarn add svelte-pagination
   pageCount={100}
   marginPagesDisplayed={2}
   pageRangeDisplayed={5}
-  onPageChange={handleChange} />
+  on:change={handleChange} />
 <br />
 
 ```

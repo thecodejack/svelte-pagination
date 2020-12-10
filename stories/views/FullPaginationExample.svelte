@@ -4,7 +4,6 @@
   let selectedValue = 1;
 
   function handleChange(e) {
-    debugger;
     const { selected } = e.detail;
     selectedValue = selected;
   }
