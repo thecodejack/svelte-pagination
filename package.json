@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "7.12.9",
+    "@babel/core": "7.12.10",
     "@rollup/plugin-commonjs": "13.0.2",
     "@rollup/plugin-node-resolve": "8.0.1",
     "@storybook/addon-actions": "5.3.19",
